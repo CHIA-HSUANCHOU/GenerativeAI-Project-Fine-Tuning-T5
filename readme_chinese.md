@@ -30,7 +30,6 @@ Course: 生成式人工智慧
 
 
 ## 3. 三種方法參數選取和結果比較：
-
 # 1. **google/flan-t5-base** 模型進行全文摘要任務的 **Full Fine-Tuning**
 
 * Model：google/flan-t5-base
@@ -142,7 +141,8 @@ Course: 生成式人工智慧
     目前僅針對 attention 層中的 q, k, v, o 模組插入 LoRA，可能因為微調較小所以表現較差。我之後可以考慮擴大插入模組的範圍，例如加入 FFN 中間層（如 "wi", "wo"），或嘗試更大規模的模型，如 google/flan-t5-xxl（11B）
 
   2. flan-t5-base + augmentation	Full Fine Tuning 較 flan-t5-base Full Fine Tuning 表現差的原因：
-    1. paraphrased 資料導致訓練資料偏誤，因為 ROUGE 是考量字詞重疊的指標。即使 paraphrased text 保有語意一致，若用字或語序與 ground truth 差異過大，可能導致模型生成時傾向使用非典型詞彙，進而降低與參考摘要的字面重疊程度，造成 ROUGE 分數下滑。
+    1. paraphrased 資料導致訓練資料偏誤，因為 ROUGE 是考量字詞重疊的指標。即使 paraphrased text 保有語意一致，若用字或語序與 ground truth 差異過大，可 
+       能導致模型生成時傾向使用非典型詞彙，進而降低與參考摘要的字面重疊程度，造成 ROUGE 分數下滑。
 
     2. T5 在低資源任務中已能有效泛化，paraphrasing 對表現提升有限。
 
