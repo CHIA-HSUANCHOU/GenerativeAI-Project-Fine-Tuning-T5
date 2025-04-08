@@ -7,8 +7,8 @@ Author: CHOU CHIA-HSUAN
 Date: 2025-04-18
 
 Course: 生成式人工智慧
----
 
+---
 
 
 ## 1. Fine tuning 過程概述
