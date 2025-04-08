@@ -11,7 +11,7 @@ Course: 生成式人工智慧
 ---
 
 
-## 1. Fine tuning 模型嘗試
+# 1. Fine tuning 模型嘗試
 
 目標：藉由 Fine-Tuning 模型針對論文的 introduction 生成精確的 abstract，搭配評估指標（ROUGE 與 BERTScore），挑選表現最佳的模型。
 嘗試了三種方法：
@@ -19,7 +19,7 @@ Course: 生成式人工智慧
 2. 使用 LoRA fine tuning flan-t5-xl
 3. 結合 Vamsi/T5_Paraphrase_Paw 改寫資料，來增加資料集，進行 flan-t5-base full fine tuning
 
-## 2. 資料
+# 2. 資料
 
 | 資料集 | 筆數 | 百分比 |
 |--------|------|--------|
@@ -29,8 +29,8 @@ Course: 生成式人工智慧
 除了訓練與驗證資料外，另有測試資料共 103 筆，用於最終摘要結果的評估。
 
 
-## 3. 三種方法參數選取和結果比較：
-# 1. **google/flan-t5-base** 模型進行全文摘要任務的 **Full Fine-Tuning**
+# 3. 三種方法參數選取和結果比較：
+## 1. **google/flan-t5-base** 模型進行全文摘要任務的 **Full Fine-Tuning**
 
 * Model：google/flan-t5-base
 * 參數量：247,577,856
@@ -70,7 +70,7 @@ Course: 生成式人工智慧
   * repetition_penalty=1.2     
   * no_repeat_ngram_size=3  
 
-# 2.  使用 LORA finetuning google/flan-t5-xl
+## 2.  使用 LORA finetuning google/flan-t5-xl
 
 為了驗證更大模型是否有助於提升摘要品質，我嘗試使用更大的模型**flan-t5-xl進行fine tuning**，並且搭配**LORA**使用。
 
@@ -104,7 +104,7 @@ Course: 生成式人工智慧
     * repetition_penalty=1.2     
     * no_repeat_ngram_size=3  
 
-# 3.使用data augmentation+Full fine tuning google/flan-t5-base
+## 3.使用data augmentation+Full fine tuning google/flan-t5-base
 
 在Full fine tuning flan-t5-base的過程中，我在想可能因為訓練資料只有367筆，因此表現較差，所以對訓練資料進行**data augmentation**來提升提升模型的泛化能力。
 
