@@ -121,6 +121,7 @@ To address potential data scarcity (only 367 training samples), a paraphrasing-b
 |flan-t5-base + augmentation Full Fine Tuning  |data aug + Prompt + Fine Tuning| 0.4509|0.1455|0.2321 |0.8637|
 
 * Final Test Set Result
+* 
 | Model | Method |ROUGH-1 | ROUGH-2 | ROUGH-L | Bert Score(F1) |
 |--------|------|--------|--------|------   |--------      |
 |flan-t5-base |Prompt + Full Fine Tuning|0.4738|0.1593|0.2446 |0.8615|
