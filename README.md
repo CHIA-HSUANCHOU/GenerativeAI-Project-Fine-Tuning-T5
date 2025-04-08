@@ -29,7 +29,7 @@ Three approaches were explored:
 An additional 103 samples are used as the test set for final evaluation.
 
 # 3. Three Method：
-## Method 1: Full Fine-Tuning with google/flan-t5-base
+### Method 1: Full Fine-Tuning with google/flan-t5-base
 
 * Model：google/flan-t5-base
 * Parameters：247,577,856
@@ -69,7 +69,7 @@ An additional 103 samples are used as the test set for final evaluation.
   * repetition_penalty=1.2     
   * no_repeat_ngram_size=3  
 
-## Method 2: LoRA Fine-Tuning with google/flan-t5-xl
+### Method 2: LoRA Fine-Tuning with google/flan-t5-xl
 To verify whether a larger model can improve summarization quality, I experimented with fine-tuning a larger model, flan-t5-xl, combined with LoRA.
 
   * Model：google/flan-t5-xl
@@ -100,7 +100,7 @@ To verify whether a larger model can improve summarization quality, I experiment
     * repetition_penalty=1.2     
     * no_repeat_ngram_size=3
     
-## Method 3: Data Augmentation + Full Fine-Tuning (flan-t5-base)
+### Method 3: Data Augmentation + Full Fine-Tuning (flan-t5-base)
 To address potential data scarcity (only 367 training samples), a paraphrasing-based data augmentation strategy was applied:
 
 * Steps:
@@ -121,14 +121,14 @@ To address potential data scarcity (only 367 training samples), a paraphrasing-b
 |flan-t5-base + augmentation Full Fine Tuning  |data aug + Prompt + Fine Tuning| 0.4509|0.1455|0.2321 |0.8637|
 
 * Final Test Set Result
-* 
+  
 | Model | Method |ROUGH-1 | ROUGH-2 | ROUGH-L | Bert Score(F1) |
 |--------|------|--------|--------|------   |--------      |
 |flan-t5-base |Prompt + Full Fine Tuning|0.4738|0.1593|0.2446 |0.8615|
 
 (baseline 0.47/0.12/0.22/0.85)
 
-# 5. Observations and Discussion
+## 5. Observations and Discussion
 1. LoRA Fine-Tuning (flan-t5-xl):
 
 The performance of the LoRA-based fine-tuning was lower than full fine-tuning of flan-t5-base. This might be because LoRA was only applied to the attention modules (q, k, v, o). Expanding LoRA to additional modules (e.g., wi, wo in the feedforward layers) or switching to a larger model like flan-t5-xxl (11B) could improve results.
