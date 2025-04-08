@@ -11,12 +11,13 @@ Course: 生成式人工智慧
 ---
 
 
-## 1. Fine tuning 過程概述
+## 1. Fine tuning 模型嘗試
 
-1. 使用 **google/flan-t5-base** 模型進行全文摘要任務的 **Full Fine-Tuning**，藉由設計 prompt，並針對論文的 introduction 欄位生成精確的 abstract，搭配評估指標（ROUGE 與 BERTScore），挑選表現最佳的模型。
-2. 使用 LoRA 微調 flan-t5-xl
-3. 結合 Vamsi/T5_Paraphrase_Paw 改寫資料，來增加資料集，進行 flan-t5-base full fine tuning。但結果都沒有 full fine tuning 好，所以我最後還是用**full fine tuning**作為提交模型。
-
+目標：藉由 Fine-Tuning 模型針對論文的 introduction 生成精確的 abstract，搭配評估指標（ROUGE 與 BERTScore），挑選表現最佳的模型。
+嘗試了三種方法：
+1. 使用 **google/flan-t5-base** 模型 full fine tuning
+2. 使用 LoRA fine tuning flan-t5-xl
+3. 結合 Vamsi/T5_Paraphrase_Paw 改寫資料，來增加資料集，進行 flan-t5-base full fine tuning
 
 ## 2. 資料
 
@@ -115,9 +116,6 @@ Course: 生成式人工智慧
   4. 把過濾後的 paraphrased 資料加回原始資料中，並且 90 % 為訓練集、10% 為驗證集。(605筆，訓練544筆/驗證161筆)
   5. 採用與 baseline 相同的 prompt 與訓練參數進行 full fine-tuning，但表現略差於 Full Fine-Tuning T5。
 
-
-
-
 ## 4. 三種模型的比較
 
 * 以下用驗證集的表現比較
@@ -126,7 +124,7 @@ Course: 生成式人工智慧
 |--------|------|--------|--------|------   |--------|
 |flan-t5-base |Prompt + Full Fine Tuning| 0.4861|0.1613|0.2471  |0.8694|
 |flan-t5-xl + LORA |Prompt + LORA Fine Tuning|0.4381| 0.1284|0.2112 |0.8391|
-|flan-t5-base + augmentation	Full Fine Tuning  |data aug + Prompt + Fine Tuning| 0.4509|0.1455|0.2321 |0.8637|
+|flan-t5-base + augmentation Full Fine Tuning  |data aug + Prompt + Fine Tuning| 0.4509|0.1455|0.2321 |0.8637|
 
 
 * Final test data Result 
